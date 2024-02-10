@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokemon Data</h1>
+    <form action="/" method="post">
+        <label for="pokemon">Choose a Pokémon:</label>
+        <select name="pokemon" id="pokemon">
+            {% for name, url in pokemon_list %}
+            <option value="{{ url }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    {% if selected_pokemon_data %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Weight</th>
+        </tr>
+        <tr>
+            <td>{{ selected_pokemon_data['name'] }}</td>
+            <td>{{ selected_pokemon_data['height'] }}</td>
+            <td>{{ selected_pokemon_data['weight'] }}</td>
+        </tr>
+    </table>
+    {% endif %}
+</body>
+</html>
